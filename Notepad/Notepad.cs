@@ -1,14 +1,29 @@
-namespace Notepad
+﻿namespace Notepad
 {
     public partial class NotepadForm : Form
     {
-        string FileContent;
         string FilePath;
 
 
         public NotepadForm()
         {
             InitializeComponent();                                  
+        }
+
+        private void NotepadForm_Load(object sender, EventArgs e)
+        {
+            LanguageFlagDisplay();
+        }
+
+        public void LanguageFlagDisplay()
+        {
+            InputLanguage LanguageUsed = InputLanguage.CurrentInputLanguage;
+#if DEBUG 
+            string LanguageFlagIconPath = "..\\..\\..\\..\\Language Flags Debug\\" + LanguageUsed.Culture.TwoLetterISOLanguageName + ".png";
+#elif RELEASE
+            string LanguageFlagIconPath = "Language Flags\\" + LanguageUsed.Culture.TwoLetterISOLanguageName + ".png";
+#endif
+            this.LanguageFlagIcon.Image = new Bitmap(LanguageFlagIconPath);
         }
 
         private void SaveFileButton_Click(object sender, EventArgs e)
@@ -49,7 +64,19 @@ namespace Notepad
                     FilePath = OpenFileDialog.FileName;
                     this.TextBox.Text = File.ReadAllText(FilePath);
                 }
-            }
+            }   
+        }
+
+        private void NotepadForm_InputLanguageChanged(object sender, InputLanguageChangedEventArgs e)
+        {
+            LanguageFlagDisplay();
+        }
+
+        private void LanguageFlagIcon_Click(object sender, EventArgs e)
+        {
+            /// There should be a language switch here by clicking on the flag
+            ///
+            /// Тут повинно бути перемикання мови за допомогою натискання на прапорець
         }
     }
 }

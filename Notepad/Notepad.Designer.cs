@@ -2,15 +2,8 @@
 {
     partial class NotepadForm
     {
-        /// <summary>
-        ///  Required designer variable.
-        /// </summary>
         private System.ComponentModel.IContainer components = null;
 
-        /// <summary>
-        ///  Clean up any resources being used.
-        /// </summary>
-        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
         protected override void Dispose(bool disposing)
         {
             if (disposing && (components != null))
@@ -22,15 +15,14 @@
 
         #region Windows Form Designer generated code
 
-        /// <summary>
-        ///  Required method for Designer support - do not modify
-        ///  the contents of this method with the code editor.
-        /// </summary>
         private void InitializeComponent()
         {
             this.SaveFileButton = new System.Windows.Forms.Button();
             this.OpenFileButton = new System.Windows.Forms.Button();
             this.TextBox = new System.Windows.Forms.TextBox();
+            this.button1 = new System.Windows.Forms.Button();
+            this.LanguageFlagIcon = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.LanguageFlagIcon)).BeginInit();
             this.SuspendLayout();
             // 
             // SaveFileButton
@@ -61,19 +53,42 @@
             this.TextBox.Location = new System.Drawing.Point(12, 47);
             this.TextBox.Multiline = true;
             this.TextBox.Name = "TextBox";
-            this.TextBox.Size = new System.Drawing.Size(776, 391);
+            this.TextBox.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.TextBox.Size = new System.Drawing.Size(950, 680);
             this.TextBox.TabIndex = 0;
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(0, 0);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 0;
+            // 
+            // LanguageFlagIcon
+            // 
+            this.LanguageFlagIcon.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.LanguageFlagIcon.Location = new System.Drawing.Point(920, 10);
+            this.LanguageFlagIcon.Name = "LanguageFlagIcon";
+            this.LanguageFlagIcon.Size = new System.Drawing.Size(34, 28);
+            this.LanguageFlagIcon.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.LanguageFlagIcon.TabIndex = 3;
+            this.LanguageFlagIcon.TabStop = false;
+            this.LanguageFlagIcon.Click += new System.EventHandler(this.LanguageFlagIcon_Click);
             // 
             // NotepadForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(974, 739);
+            this.Controls.Add(this.LanguageFlagIcon);
             this.Controls.Add(this.TextBox);
             this.Controls.Add(this.OpenFileButton);
             this.Controls.Add(this.SaveFileButton);
             this.Name = "NotepadForm";
             this.Text = "Notepad";
+            this.Load += new System.EventHandler(this.NotepadForm_Load);
+            this.InputLanguageChanged += new System.Windows.Forms.InputLanguageChangedEventHandler(this.NotepadForm_InputLanguageChanged);
+            ((System.ComponentModel.ISupportInitialize)(this.LanguageFlagIcon)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -84,5 +99,7 @@
         private TextBox TextBox;
         private Button SaveFileButton;
         private Button OpenFileButton;
+        private Button button1;
+        private PictureBox LanguageFlagIcon;
     }
 }
