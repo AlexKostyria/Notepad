@@ -26,7 +26,53 @@
             this.LanguageFlagIcon.Image = new Bitmap(LanguageFlagIconPath);
         }
 
-        private void SaveFileButton_Click(object sender, EventArgs e)
+        private void NotepadForm_InputLanguageChanged(object sender, InputLanguageChangedEventArgs e)
+        {
+            LanguageFlagDisplay();
+        }
+
+        private void LanguageFlagIcon_Click(object sender, EventArgs e)
+        {
+            /// <summary>
+            /// There should be a language switch here by clicking on the flag
+            ///
+            /// Тут повинно бути перемикання мови за допомогою натискання на прапорець
+            /// 
+            /// in short, I did not understand how to switch the keyboard layout
+            /// maybe someday I will, but it's not certain
+            /// 
+            /// коротше кажучи я не зрозумів як перемикати розкладку клавіатури
+            /// може колись зроблю але це не точно
+            /// </summary>
+
+            MessageBox.Show("😐", "😐");
+        }
+
+        private void NewToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FilePath = null;
+            this.TextBox.Text = null;
+        }
+
+        private void OpenToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            using (OpenFileDialog OpenFileDialog = new OpenFileDialog())
+            {
+                OpenFileDialog.Title = "Open file";
+                OpenFileDialog.InitialDirectory = "CSIDL_MYDOCUMENTS";
+                OpenFileDialog.Filter = "txt files (*.txt)|*.txt|All files (*.*)|*.*";
+                OpenFileDialog.FilterIndex = 2;
+                OpenFileDialog.RestoreDirectory = true;
+
+                if (OpenFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    FilePath = OpenFileDialog.FileName;
+                    this.TextBox.Text = File.ReadAllText(FilePath);
+                }
+            }
+        }
+
+        private void SaveToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (FilePath == null)
             {
@@ -47,36 +93,6 @@
             }
             else
                 File.WriteAllText(FilePath, TextBox.Text);
-        }
-
-        private void OpenFileButton_Click(object sender, EventArgs e)
-        {
-            using (OpenFileDialog OpenFileDialog = new OpenFileDialog())
-            {
-                OpenFileDialog.Title = "Open file";
-                OpenFileDialog.InitialDirectory = "CSIDL_MYDOCUMENTS";
-                OpenFileDialog.Filter = "txt files (*.txt)|*.txt|All files (*.*)|*.*";
-                OpenFileDialog.FilterIndex = 2;
-                OpenFileDialog.RestoreDirectory = true;
-
-                if (OpenFileDialog.ShowDialog() == DialogResult.OK)
-                {
-                    FilePath = OpenFileDialog.FileName;
-                    this.TextBox.Text = File.ReadAllText(FilePath);
-                }
-            }   
-        }
-
-        private void NotepadForm_InputLanguageChanged(object sender, InputLanguageChangedEventArgs e)
-        {
-            LanguageFlagDisplay();
-        }
-
-        private void LanguageFlagIcon_Click(object sender, EventArgs e)
-        {
-            /// There should be a language switch here by clicking on the flag
-            ///
-            /// Тут повинно бути перемикання мови за допомогою натискання на прапорець
         }
     }
 }
