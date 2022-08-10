@@ -18,7 +18,7 @@
 #if DEBUG 
             string LanguageFlagIconPath = "..\\..\\..\\..\\Language Flags Debug\\" + LanguageUsed.Culture.TwoLetterISOLanguageName + ".png";
 #elif RELEASE
-            string LanguageFlagIconPath = "Language Flags\\" + LanguageUsed.Culture.TwoLetterISOLanguageName + ".png";
+            string LanguageFlagIconPath = "..\\Language Flags\\" + LanguageUsed.Culture.TwoLetterISOLanguageName + ".png";
 #endif
             this.LanguageFlagIcon.Image = new Bitmap(LanguageFlagIconPath);
         }

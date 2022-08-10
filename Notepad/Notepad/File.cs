@@ -2,7 +2,7 @@
 {
     internal class File
     {
-        static string FilePath;
+        static string? FilePath;
 
         public static void Save(TextBox TextBox)
         {
