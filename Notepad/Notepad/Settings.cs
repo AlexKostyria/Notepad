@@ -1,7 +1,7 @@
 ﻿namespace Notepad.Notepad
 {
-    class Notepad
+    class Settings
     {
-
+        //System.IO.File
     }
 }

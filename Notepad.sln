@@ -5,6 +5,8 @@ VisualStudioVersion = 17.2.32526.322
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Notepad", "Notepad\Notepad.csproj", "{00F0ECBB-C267-4337-9238-1A8B2C04480A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SettingsEditor", "SettingsEditor\SettingsEditor.csproj", "{758A3E89-10A3-4231-8D7C-338D5B29EC94}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{00F0ECBB-C267-4337-9238-1A8B2C04480A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{00F0ECBB-C267-4337-9238-1A8B2C04480A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{00F0ECBB-C267-4337-9238-1A8B2C04480A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{758A3E89-10A3-4231-8D7C-338D5B29EC94}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{758A3E89-10A3-4231-8D7C-338D5B29EC94}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{758A3E89-10A3-4231-8D7C-338D5B29EC94}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{758A3E89-10A3-4231-8D7C-338D5B29EC94}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

